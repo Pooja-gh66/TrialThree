@@ -1,5 +1,9 @@
 import { Link } from "react-router-dom"
 
+import '../index.css'; // Import your global styles here
+import '../styles/bootstrap.min.css'; // Import the local Bootstrap CSS
+//import '../styles/fonts/bootstrap-icons.min.css'; 
+
 export function Navbar (){
     return(
         <nav className="navbar navbar-expand-lg bg-white border-bottom box-shadow">
@@ -17,7 +21,7 @@ export function Navbar (){
                     {/* <Link className="nav-link text-dark" to="/add">Add Record</Link> */}
                     </li>                                      
                 </ul>
-                <ul className="navbar-nav">
+                {/* <ul className="navbar-nav">
                 <li className="nav-item dropdown">
                     <a className="nav-link dropdown-toggle text-dark" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Admin
@@ -29,7 +33,7 @@ export function Navbar (){
                         <li><a className="dropdown-item" href="#">Logout</a></li>
                     </ul>
                     </li> 
-                </ul>
+                </ul> */}
                 </div>
             </div>
         </nav>
@@ -40,7 +44,7 @@ export function Footer() {
     return (
         <div className="text-center p-4 border-top">
             <img src="/icon.png" alt="..." width="30" className="me-2"/>
-            Visitors List
+            Visitors Records
         </div>
     )
 

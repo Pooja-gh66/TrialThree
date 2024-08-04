@@ -1,5 +1,4 @@
 {
-  "homepage": "https://Pooja-gh66.github.io/Visitors-Records",
   "name": "vistors-records",
   "version": "0.1.0",
   "private": true,
@@ -14,9 +13,7 @@
     "react-scripts": "5.0.1",
     "web-vitals": "^2.1.4"
   },
-  "scripts": {
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
+  "scripts": {    
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",

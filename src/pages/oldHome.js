@@ -77,6 +77,7 @@ export function Home() {
             <h2 className="text-center mb-4">Visitor Records</h2>
             <div className="row mb-3">
                 <div className="col">
+                    <Link className="btn btn-primary me-1" to="/add" role="button">Add</Link>
                     <button type="button" className="btn btn-outline-primary" onClick={getVisitors}>Refresh</button>
                 </div>
                 <div className="col">
@@ -93,27 +94,6 @@ export function Home() {
                     }
                     .table tbody tr.selected {
                         background-color: #d1e7dd;
-                    }
-                    .fab {
-                        position: fixed;
-                        bottom: 20px;
-                        right: 20px;
-                        background-color: #007bff;
-                        color: white;
-                        border: none;
-                        border-radius: 50%;
-                        width: 56px;
-                        height: 56px;
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                        font-size: 24px;
-                        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-                        cursor: pointer;
-                        z-index: 1000;
-                    }
-                    .fab:hover {
-                        background-color: #0056b3;
                     }
                 `}
             </style>
@@ -187,8 +167,10 @@ export function Home() {
                                         <span>{selectedRow.signOut}</span>
                                     ) : (
                                         <span>Not Done Yet</span>
-                                    )}
-                                </p>
+                                    )}</p>
+
+                               
+
                             </div>
                             <div className="modal-footer">
                                 <button type="button" className="btn btn-secondary" onClick={handleClose}>Close</button>
@@ -197,10 +179,6 @@ export function Home() {
                     </div>
                 </div>
             )}
-
-            <Link to="/add" className="fab">
-                <span>+</span>
-            </Link>
         </div>
     );
 }

@@ -1,7 +1,9 @@
+import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 
 export default function Add() {
 
+    const [validationErrors, setValidationErrors] = useState({})
     const navigate = useNavigate()
 
     async function handleSubmit(event){
@@ -20,16 +22,18 @@ export default function Add() {
         try{
             const response = await fetch("http://localhost:4000/visitors", {
                 method: "POST",
-                body: formData
-            })
-            const data = await response.json()
-
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(visitor),
+            });
             if( response.ok){
-                //alert("Record Added..!")
+                //alert(formData)
                 navigate("/")
             }
             else if (response.status === 400) {
-                alert("Validation Errors..!")
+                const data = await response.json();
+                setValidationErrors(data);
             }
             else{
                 alert("Failed to create the record..!")
@@ -46,56 +50,90 @@ export default function Add() {
         <div className="container my-4">
             <div className="row">
                 <div className="col-md-8 mx-auto rounded border p-4">
-                <h2>Welcome to the Add</h2>
-                <form class="row g-3" onSubmit={handleSubmit}>
-                    <div class="col-md-6">
-                        <label for="" class="form-label">Name</label>
-                        <input type="text" class="form-control" placeholder="Enter Name" aria-label="name" name="name"></input>
-                        <span className="text-danger"></span>                  
+                <h2 className="text-center mb-5">Add Visitor's Details</h2>
+                <form onSubmit={handleSubmit}>
+                    
+                    <div class="row mb-3">
+                    <label className="col-sm-4 col-form-lable" for="">Name</label>
+                        <div className="col-sm-8">
+                            <input type="text" class="form-control" placeholder="Enter Name" aria-label="name" name="name"></input>
+                            <span className="text-danger">{validationErrors.name}</span>
+                        </div>          
                     </div>
-                    <div class="col-md-6">
-                    <label for="" class="form-label">Company</label>
-                        <input type="text" class="form-control" placeholder="Enter Company's Name" aria-label="cname" name="company"></input>
-                        <span className="text-danger"></span>
-                    </div>
-                    <div class="col-12">
-                        <label for="" class="form-label">Email</label>
-                        <input type="email" class="form-control" placeholder="Enter Email Id" id="inputEmail4" name="email"/>
-                        <span className="text-danger"></span>
-                    </div>
-                    <div class="col-12">
-                        <label for="" class="form-label">Phone</label>
-                        <input type="text" class="form-control" placeholder="Enter Phone Number" aria-label="name" name="phone"></input>
-                        <span className="text-danger"></span>
-                    </div>
-                    <div class="col-md-6">
-                        <label for="" class="form-label">Name of Person Visiting</label>
-                        <input type="text" class="form-control" placeholder="Enter Name of Person Visiting" aria-label="name" name="personV"></input>
-                        <span className="text-danger"></span>
-                    </div>
-                    <div class="col-md-4">
-                        <label for="" class="form-label">Purpose of Visit</label>
-                        <input type="text" class="form-control" placeholder="Enter Purpose of Visit" aria-label="name" name="purpose"></input>
-                        <span className="text-danger"></span>
-                    </div>
-                    <div class="col-md-2">
-                        <label for="" class="form-label">Date & Time</label>
-                        <div class='input-group date' id='datetimepicker1'>
-                            <input aria-label="Date and time" type="datetime-local" name="signIn"/>
-                            <span class="input-group-addon">
-                            <span class="glyphicon glyphicon-calendar"></span>
-                            </span>
-                            <span className="text-danger"></span>
+
+                    <div className="row mb-3">
+                    <label className="col-sm-4 col-form-lable" for="">Company</label>
+                        <div className="col-sm-8">                    
+                            <input type="text" class="form-control" placeholder="Enter Company's Name" aria-label="cname" name="company"></input>
+                            <span className="text-danger">{validationErrors.company}</span>
                         </div>
-                    </div>                
-                    <div class="col-12">
-                        <button type="submit" class="btn btn-primary">Save</button>
-                        <button type="reset" class="btn btn-primary">Cancle</button>
                     </div>
+                    
+                    <div className="row mb-3">
+                    <label className="col-sm-4 col-form-lable" for="">Email</label>
+                        <div className="col-sm-8">                        
+                            <input type="email" class="form-control" placeholder="Enter Email Id" id="inputEmail4" name="email"/>
+                            <span className="text-danger">{validationErrors.email}</span>
+                        </div>
+                    </div>
+
+                    <div className="row mb-3">
+                    <label className="col-sm-4 col-form-lable" for="">Phone</label>
+                        <div className="col-sm-8">                        
+                            <input type="text" class="form-control" placeholder="Enter Phone Number" aria-label="name" name="phone"></input>
+                            <span className="text-danger">{validationErrors.phone}</span>
+                        </div>
+                    </div>
+                    
+                    <div className="row mb-3">
+                    <label className="col-sm-4 col-form-lable" for="">Name of Person Visiting</label>
+                        <div className="col-sm-8">                        
+                            <input type="text" class="form-control" placeholder="Enter Name of Person Visiting" aria-label="name" name="personV"></input>
+                            <span className="text-danger">{validationErrors.personV}</span>
+                        </div>
+                    </div>
+                    
+                    <div className="row mb-3">
+                    <label className="col-sm-4 col-form-lable" for="">Purpose of Visit</label>
+                        <div className="col-sm-8">                        
+                            <input type="text" class="form-control" placeholder="Enter Purpose of Visit" aria-label="name" name="purpose"></input>
+                            <span className="text-danger">{validationErrors.purpose}</span>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                    <label className="col-sm-4 col-form-lable" for="">Sign In</label>
+                        <div className="col-sm-8">
+                            <input type="readonly" value={new Date().toISOString()} class="form-control"  aria-label="name" name="signIn"></input>
+                            <span className="text-danger">{validationErrors.name}</span>
+                        </div>          
+                    </div>
+                   
+                    {/* <div className="row mb-3">
+                            <label className="col-sm-4 col-form-label" htmlFor="signIn">Date & Time</label>
+                            <div className="col-sm-8">
+                                <input
+                                    aria-label="Date and time"
+                                    type="datetime-local"
+                                    name="signIn"
+                                />
+                                <span className="text-danger">{validationErrors.signIn}</span>
+                            </div>
+                    </div> */}
+
+                    <div className="row">
+                        <div className="offset-sm-4 col-sm-4 d-grid">
+                            <button type="submit" class="btn btn-primary">Save</button>                            
+                        </div>
+                        <div className="col-sm-4 d-grid">                            
+                            <button type="reset" class="btn btn-secondary">Cancle</button>
+                        </div>
+                    </div>                      
                 </form>
                 </div>
             </div>            
         </div>
+        
     )
 
 }
