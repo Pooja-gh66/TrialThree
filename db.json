@@ -1,0 +1,35 @@
+{
+  "visitors": [
+    {
+      "id": 1,
+      "name": "Riya",
+      "company": "RBC",
+      "email": "riya123@gmail.com",
+      "phone": "8965654785",
+      "personV": "Mr.Jones",
+      "purpose": "SEO Meeting",
+      "signIn": "2024-08-06T13:00:52.769Z",
+      "signOut": "2024-08-07T03:59:59.999Z"
+    },
+    {
+      "name": "Shruti Bhatt",
+      "company": "Digital Web Weaver",
+      "email": "Shruti@gmail.com",
+      "phone": "1114445525",
+      "personV": "Mr.Dave",
+      "purpose": "Interview",
+      "signIn": "2024-08-06T13:00:52.769Z",
+      "id": 2
+    },
+    {
+      "name": "Heli",
+      "company": "Root IT Solution",
+      "email": "Heli@gmail.com",
+      "phone": "2223366556",
+      "personV": "Ms.Rana",
+      "purpose": "Marketing Meeting",
+      "signIn": "2024-08-06T13:01:59.022Z",
+      "id": 3
+    }
+  ]
+}
