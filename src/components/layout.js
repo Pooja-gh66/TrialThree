@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom"
 
-import '../index.css'; // Import your global styles here
-import '../styles/bootstrap.min.css'; // Import the local Bootstrap CSS
+import '../index.css'; 
+import '../styles/bootstrap.min.css'; 
 //import '../styles/fonts/bootstrap-icons.min.css'; 
 
 export function Navbar (){

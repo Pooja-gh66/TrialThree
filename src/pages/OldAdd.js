@@ -24,37 +24,12 @@ export default function Add() {
         const formData = new FormData(event.target)
         const visitor = Object.fromEntries(formData.entries())
 
+        if(!visitor.name || !visitor.company || !visitor.email || !visitor.phone 
+            || !visitor.personV || !visitor.purpose || !visitor.signIn ){
 
-
-    // Validate form data
-    let errors = {};
-    if (!visitor.name){ 
-        errors.name = "Name is required." 
-    } else if (visitor.name.length < 3) {
-        errors.name = "Name must be at least 3 characters long.";
-    }
-    if (!visitor.company){
-        errors.company = "Company is required.";
-    } else if (visitor.company.length < 3) {
-        errors.name = "Company Name must be at least 3 characters long.";
-    }
-    if (!visitor.email) errors.email = "Email is required.";
-    if (!visitor.phone) errors.phone = "Phone number is required.";
-    if (!visitor.personV){
-        errors.personV = "Person Visiting is required.";
-    } else if (visitor.personV.length < 3) {
-        errors.name = "Person's Name must be at least 3 characters long.";
-    } 
-    if (!visitor.purpose){
-        errors.purpose = "Purpose of Visit is required.";
-    } else if (visitor.purpose.length < 3) {
-        errors.name = "Purpose must be at least 5 characters long.";
-    } 
-    if (!visitor.signIn) errors.signIn = "Sign In time is required.";
-
-    setValidationErrors(errors);
-
-        if(Object.keys(errors).length >0 ) return;                
+                alert("Please fill out all the data..!")
+                return
+        }
 
         try{
             const response = await fetch("http://localhost:4000/visitors", {
