@@ -1,5 +1,3 @@
-<BrowserRouter basename={process.env.PUBLIC_URL}></BrowserRouter>
-
 FROM node:20-alpine
 
 WORKDIR /app

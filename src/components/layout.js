@@ -8,7 +8,7 @@ export function Navbar (){
     return(
         <nav className="navbar navbar-expand-lg bg-white border-bottom box-shadow">
             <div className="container">
-                <Link className="navbar-brand" to="/"><img src="/icon.png" alt="..." width="30" className="me-2"/>Visitors Records</Link>
+                <Link className="navbar-brand" to="/"><img src="icon.png" alt="..." width="30" className="me-2"/>Visitors Records</Link>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
                 <span className="navbar-toggler-icon"></span>
                 </button>
@@ -43,7 +43,7 @@ export function Navbar (){
 export function Footer() {
     return (
         <div className="text-center p-4 border-top">
-            <img src="/icon.png" alt="..." width="30" className="me-2"/>
+            <img src="icon.png" alt="..." width="30" className="me-2"/>
             Visitors Records
         </div>
     )
