@@ -8,7 +8,7 @@ import Add from './pages/Add';
 
 function App(){
   return(
-    <BrowserRouter basename='/TrialThree'>
+    <BrowserRouter basename='/Visitors-Records-Main'>
     <Navbar />
     <Routes>
       <Route path='/' element={<Home />}/>
